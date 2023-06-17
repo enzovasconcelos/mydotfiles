@@ -120,7 +120,7 @@ fi
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-export PS1="(${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\])\$(parse_git_branch)\n$ "
+export PS1="(${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\])\$(parse_git_branch)\n$ "
 #export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
 # Adicionando ~/.local/bin por causa do TST
@@ -128,3 +128,10 @@ PATH=~/.local/bin:$PATH
 
 # alias para trabalhar com diretório de versionar dotfiles
 alias config='/usr/bin/git --git-dir=/home/enzo/.mydotfiles --work-tree=/home/enzo'
+
+# path por causa dos node packages
+export PATH=~/.npm-global/bin:$PATH
+
+export NODE_HOME=/opt/node-v18.16.0-linux-x64
+export PATH=$NODE_HOME/bin:$PATH
+export PATH=/opt/mssql-tools/bin:$PATH
